@@ -4,4 +4,4 @@ git clone https://github.com/alex-oliynyk/study
 git commit -m "lab1: коміт команди для клонування"
 Хеш першого коміту:
 5b5e0335300c953c1db27cce3a7668b8145b2a35
-
+Ми не бачимо змін у файлі README.md тому, що ці змінии зміни ми робили в гілці newbranch.
