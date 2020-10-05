@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## 1
 ### Для клонування репозиторію я використав команду:
 ### git clone https://github.com/alex-oliynyk/study
@@ -20,3 +21,5 @@
 ### Проблему вирішив шляхом ручного видалення зайвих рядків і добавленням поточного файлу до коміту.
 ## 8
 ### Редагуємо файл у Веб-версії.
+![alt text](https://github.com/alex-oliynyk/devops_course/blob/master/lab1/edite_file.png)
+
