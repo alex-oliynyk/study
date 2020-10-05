@@ -8,3 +8,4 @@ git commit -m "lab1: коміт команди для клонування"
 git branch newbranch
 Команда для перемикання на гілку newbranch:
 git checkout newbranch
+Ми не бачимо змін у файлі README.md тому, що ці змінии зміни ми робили в гілці newbranch.
