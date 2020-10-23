@@ -1,7 +1,7 @@
 all: install test run deploy
 
 install:
-	@echo "Setting up pipenv environment..."
+	@echo "Installing pipenv and dependencies."
 	pip install pipenv
 	pipenv --python 3.8 
 	pipenv install requests
@@ -9,15 +9,15 @@ install:
 	pipenv install pytest
 
 test:
-	@echo "Running tests..."
+	@echo "Start tests."
 	pipenv run python3 app.py >> results.txt
 
 run:
-	@echo "Running app..."
+	@echo "Run Python app."
 	pipenv run pytest tests/tests.py >> results.txt
 
 deploy:
-	@echo "Deploying"
+	@echo "Adding and Committing results.txt to git."
 	git add results.txt
 	git commit -m "додаємо results.txt"
 	git push
