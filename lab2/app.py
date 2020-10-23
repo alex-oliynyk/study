@@ -45,9 +45,10 @@ def home_work(url=''):
     str_time = d['time']
     find_p = str_time.find("P")
     if find_p == -1:
-        return "Добрий день"
+        print("Добрий день")
     else:
-        return "Доброї ночі"
+        print("Доброї ночі")
+    return True
 
 
 if __name__ == "__main__":
@@ -56,5 +57,4 @@ if __name__ == "__main__":
     main()
     print(a + "\nРезультат з правильною URL: ")
     main('http://date.jsontest.com/')
-    msg = home_work('http://date.jsontest.com/')
-    print(msg)
+    home_work('http://date.jsontest.com/')

@@ -22,4 +22,4 @@ class TestClass(unittest.TestCase):
 
     def test_home_work(self):
         # Ваш захист
-        self.assertEqual(home_work(self.date_url), "Добрий день", "Доброї ночі")
+        self.assertTrue(home_work(self.date_url))
