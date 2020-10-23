@@ -6,7 +6,6 @@ install:
 	@echo "Installing pipenv and dependencies."
 	pip install pipenv
 	pipenv --python 3.8
-	pipenv shell
 	pipenv install requests
 	pipenv install ntplib
 	pipenv install pytest
