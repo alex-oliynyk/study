@@ -22,7 +22,7 @@
     docker images
     dokcer push alexolink/study:django
     ```
-7. Для запуску веб-сайту потрібно виконав команду:
+7. Для запуску веб-сайту виконав команду:
     ```bash
     docker run -it --name=django --rm -p 8000:8000 alexolink/study:django
     ``` 
@@ -44,5 +44,5 @@
     ```
 12. Виникли труднощі з використанням ключа --volume, тому довелося експортувати файли з контейнеру, після чого скопіював server.log до репозиторію:
     ```bash
-    sudo docker export b5e868517bcf > /home/alex/monitoring.tar
+    docker export b5e868517bcf > /home/alex/monitoring.tar
     ```
