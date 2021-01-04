@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.site
+    image: alexolink/study:app-django
+    container_name: django
+    networks:
+      - public
+    ports:
+      - 8000:8000
+  monitoring:
+    build:
+      context: .
+      dockerfile: Dockerfile.monitoring
+    image: alexolink/study:app-monitoring
+    container_name: monitoring
+    network_mode: host
+    volumes:
+      - monit-log:/app/
+
+volumes:
+  monit-log:
+    driver: local
+
+networks:
+  public:
+    driver: bridge
