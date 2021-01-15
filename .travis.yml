@@ -5,39 +5,39 @@ python:
 
 jobs:
   include:
-    - stage: "build lab2"
-      name: "lab2"
+    - stage: "Build Lab 2."
+      name: "Run tests for Lab 2"
       python: 3.8
       install:
-        - cd ./Lab_2/
+        - cd ./lab2/
         - pipenv install
       script: pipenv run pytest tests/tests.py || true
-    - stage: "build lab3"
-      name: "run server and tests"
+    - stage: "Build Lab 3."
+      name: "Run Django Server and test it accessibility. Fail to run and test"
       python: 3.8
       install:
-        - cd ./Lab_3/
+        - cd ./lab3/
         - pipenv install
         - pipenv install requests
         - pipenv install django
       script: bash ./script/travis-build.sh
-    - stage: "build lab4"
-      name: "build docker"
+    - stage: "Build Lab 4."
+      name: "Build Docker images & Home task"
       services:
         - docker
       install:
-        - cd ./Lab_4/
+        - cd ./lab4/
       script:
-        - docker build -t alexolink/study:travis .
+        - docker build -t alexolink/study:django-travis .
         - docker images
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker push alexolink/study:travis
-    - stage: "build lab5"
-      name: "lab5"
+        - docker push alexolink/study:django-travis
+    - stage: "Build Lab 5."
+      name: "Build and run Docker images via make"
       services:
         - docker
       install:
-        - cd ./Lab_5/
+        - cd ./lab5/
         - make app
         - make tests
       script:
@@ -45,4 +45,4 @@ jobs:
         - make test-app
 branches:
   only:
-    - main
+    - master

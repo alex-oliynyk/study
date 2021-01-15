@@ -2,6 +2,7 @@ import requests
 import json
 import logging
 import time
+import sys
 
 logging.basicConfig(
     filename="server.log",
@@ -27,7 +28,6 @@ def main(url):
         except Exception as e:
             logging.error(F'Error: {e}')
             print('Не вдалося підключитись!')
-
         time.sleep(60)
 
 
