@@ -14,7 +14,7 @@ log = logging.getLogger(__name__)
 
 
 def main(url):
-
+    print("run monitoring")
     while True:
         try:
             r = requests.get(url)
