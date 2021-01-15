@@ -9,14 +9,14 @@ jobs:
       name: "lab2"
       python: 3.8
       install:
-        - cd ./Lab_2/
+        - cd ./lab2/
         - pipenv install
       script: pipenv run pytest tests/tests.py || true
     - stage: "build lab3"
       name: "run server and tests"
       python: 3.8
       install:
-        - cd ./Lab_3/
+        - cd ./lab3/
         - pipenv install
         - pipenv install requests
         - pipenv install django
@@ -26,7 +26,7 @@ jobs:
       services:
         - docker
       install:
-        - cd ./Lab_4/
+        - cd ./lab4/
       script:
         - docker build -t alexolink/study:travis .
         - docker images
@@ -37,7 +37,7 @@ jobs:
       services:
         - docker
       install:
-        - cd ./Lab_5/
+        - cd ./lab5/
         - make app
         - make tests
       script:
