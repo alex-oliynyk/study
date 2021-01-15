@@ -28,6 +28,7 @@ def main(url):
         except Exception as e:
             logging.error(F'Error: {e}')
             print('Не вдалося підключитись!')
+            return 0
         time.sleep(60)
 
 
