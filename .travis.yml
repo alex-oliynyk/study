@@ -9,7 +9,7 @@ jobs:
       name: "Run tests for Lab 2"
       python: 3.8
       install:
-        - cd ./lab_2/
+        - cd ./lab2/
         - make install
       script: make test-cli
     - stage: "Build Lab 3."
