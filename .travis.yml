@@ -5,35 +5,34 @@ python:
 
 jobs:
   include:
-    - stage: "build lab2"
-      name: "lab2"
+    - stage: "Build Lab 2."
+      name: "Run tests for Lab 2"
       python: 3.8
       install:
-        - cd ./lab2/
-        - pipenv install
-      script: pipenv run pytest tests/tests.py || true
-    - stage: "build lab3"
-      name: "run server and tests"
+        - cd ./lab_2/
+        - make install
+      script: make test-cli
+    - stage: "Build Lab 3."
+      name: "Run Djungo Server and test it accessibility. Fail to run and test"
       python: 3.8
       install:
         - cd ./lab3/
         - pipenv install
-        - pipenv install requests
-        - pipenv install django
-      script: bash ./script/travis-build.sh
-    - stage: "build lab4"
-      name: "build docker"
+      script: ./script/travis-build.sh
+    - stage: "Build Lab 4."
+      name: "Build Docker images & Home task"
       services:
         - docker
       install:
         - cd ./lab4/
       script:
-        - docker build -t alexolink/study:travis .
+        - docker build -t alexolink/study:django-travis .
+        - docker build -t alexolink/study:monitor-travis --file Dockerfile.monitoring . 
         - docker images
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker push alexolink/study:travis
-    - stage: "build lab5"
-      name: "lab5"
+        - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; docker push alexolink/study:django-travis; else echo "PR skip deploy"; fi
+        - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; docker push alexolink/study:monitor-travis; else echo "PR skip deploy"; fi
+    - stage: "Build Lab 5."
+      name: "Build and run Docker images via make"
       services:
         - docker
       install:
@@ -43,6 +42,8 @@ jobs:
       script:
         - make run
         - make test-app
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - make push
 branches:
   only:
     - master
